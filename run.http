@@ -14,3 +14,16 @@ Content-Type: application/json
     "lido": false,
     "nota": 9.5
 }
+
+###
+
+put http://localhost:3333/livro/
+Content-Type: application/json
+
+{
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "ano": 1953,
+    "lido": false,
+    "nota": 9.5
+}

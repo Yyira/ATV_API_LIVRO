@@ -31,3 +31,20 @@ server.post("/livro", (Request, replay) => {
       
       
 })
+
+//metodo put
+
+server.put("/livro/:id", (Request, replay) => {
+    const livroId = Request.params.id
+    const { titulo, autor, ano, lido, nota } = Request.body 
+    database.update(
+        livroId, {
+            titulo,
+            autor,
+            ano,
+            lido,
+            nota
+        }
+    )
+    return replay.status(204).send()
+})
