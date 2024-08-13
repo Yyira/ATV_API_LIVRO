@@ -27,3 +27,7 @@ Content-Type: application/json
     "lido": false,
     "nota": 9.5
 }
+
+###
+
+DELETE http://localhost:3333/livro/

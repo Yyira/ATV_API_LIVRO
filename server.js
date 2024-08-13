@@ -14,7 +14,7 @@ server.get("/livro", () => {
 })
 
 
-server.listen({port:3333})
+
 
 //metodo post
 
@@ -47,4 +47,20 @@ server.put("/livro/:id", (Request, replay) => {
         }
     )
     return replay.status(204).send()
+
 })
+
+
+//metodo delete
+
+server.delete("/livro/:id", (Request, replay) => {
+    const livroId = Request.params.id
+
+    database.delete(livroId)
+    
+    return replay.status(204).send()
+
+})
+
+
+server.listen({port:3333})
