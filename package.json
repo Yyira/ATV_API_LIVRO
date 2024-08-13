@@ -2,6 +2,7 @@
   "name": "avt_api_livro",
   "version": "1.0.0",
   "main": "database_memory.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
