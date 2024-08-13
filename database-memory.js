@@ -1,5 +1,4 @@
 import { randomUUID } from "node:crypto"
-
 export class DatabaseMemory {
 #livros = new Map()
     
@@ -13,4 +12,11 @@ export class DatabaseMemory {
                 ...data, 
                 }})
             }
+
+    create(livro) {
+                const livroId = randomUUID()
+        
+                this.#livros.set(livroId, livro)
+            }
+        
 }

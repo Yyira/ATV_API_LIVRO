@@ -1,1 +1,16 @@
 GET http://localhost:3333/livro
+
+
+###
+
+
+POST http://localhost:3333/livro
+Content-Type: application/json
+
+{
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "ano": 1954,
+    "lido": false,
+    "nota": 9.5
+}

@@ -15,3 +15,19 @@ server.get("/livro", () => {
 
 
 server.listen({port:3333})
+
+//metodo post
+
+server.post("/livro", (Request, replay) => {
+    const { titulo, autor, ano, lido, nota} = Request.body
+      database.create({
+        titulo,
+        autor,
+        ano,
+        lido,
+        nota
+      }) 
+      return replay.status(201).send()
+      
+      
+})
