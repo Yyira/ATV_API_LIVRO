@@ -15,7 +15,9 @@ export class DatabaseMemory {
 
         .filter(livro =>{
             if (titulo) {
-                return livro.titulo.includes(titulo)
+                const titulo_low = livro.titulo.toLowerCase()
+                return (titulo_low.includes(titulo.toLowerCase()))
+            
             }
             
             return true
