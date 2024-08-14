@@ -1,5 +1,10 @@
+//lista de livros
 GET http://localhost:3333/livro
 
+
+###
+//pesquisa
+GET http://localhost:3333/livro?titulo=
 
 ###
 

@@ -2,8 +2,9 @@ import { randomUUID } from "node:crypto"
 export class DatabaseMemory {
 #livros = new Map()
     
-    list() {
-        return Array.from(this.#livros.entries()).map((livroArray) =>{
+    list(titulo) {
+        return Array.from(this.#livros.entries())
+        .map((livroArray) =>{
             const id = livroArray[0]
             const data = livroArray [1]
 
@@ -11,7 +12,17 @@ export class DatabaseMemory {
                 id,
                 ...data, 
                 }})
+
+        .filter(livro =>{
+            if (titulo) {
+                return livro.titulo.includes(titulo)
             }
+            
+            return true
+
+                })
+            }
+
 
     create(livro) {
                 const livroId = randomUUID()

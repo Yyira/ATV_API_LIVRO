@@ -7,9 +7,10 @@ const database = new DatabaseMemory
  
 //metodo get
 
-server.get("/livro", () => {
-    const livro = database.list()
-    console.log()
+server.get("/livro", (Request) => {
+    const titulo = Request.query.titulo
+    const livro = database.list(titulo)
+
     return livro
 })
 
