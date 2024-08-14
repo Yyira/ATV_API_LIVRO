@@ -9,9 +9,14 @@ const database = new DatabaseMemory
 
 server.get("/livro", (Request) => {
     const titulo = Request.query.titulo
-    const livro = database.list(titulo)
+    const ano = Request.query.ano
+    const nota = Request.query.nota
+    const autor = Request.query.autor
+    const lido = Request.query.lido
+    console.log(lido)
+    const livro = database.list(titulo,ano,nota,autor,lido)
 
-    return livro
+    return livro 
 })
 
 
