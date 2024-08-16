@@ -4,7 +4,7 @@ GET http://localhost:3333/livro
 
 ###
 //pesquisa
-GET http://localhost:3333/livro?titulo=O Senhor dos Anéis&ano=1954&nota=9.5&autor=J.R.R. Tolkien&lido=false
+GET http://localhost:3333/livro?titulo=O Senhor dos Anéis&ano=1954&nota=9.5&autor=J.R.R. Tolkien&lido=true
 
 ###
 
@@ -19,6 +19,20 @@ Content-Type: application/json
     "lido": false,
     "nota": 9.5
 }
+###
+
+
+POST http://localhost:3333/livro
+Content-Type: application/json
+
+{
+    "titulo": "O Senhor dos Anéi",
+    "autor": "J.R.R. Tolkien",
+    "ano": 1953,
+    "lido": true,
+    "nota": 9
+}
+
 
 ###
 

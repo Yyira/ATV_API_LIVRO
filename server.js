@@ -4,7 +4,7 @@ import { DatabaseMemory } from "./database-memory.js";
 const server = fastify()
 
 const database = new DatabaseMemory
- 
+
 //metodo get
 
 server.get("/livro", (Request) => {
@@ -13,10 +13,10 @@ server.get("/livro", (Request) => {
     const nota = Request.query.nota
     const autor = Request.query.autor
     const lido = Request.query.lido
-    console.log(lido)
-    const livro = database.list(titulo,ano,nota,autor,lido)
+    
+    const livro = database.list(titulo, ano, nota, autor, lido)
 
-    return livro 
+    return livro
 })
 
 
@@ -25,32 +25,32 @@ server.get("/livro", (Request) => {
 //metodo post
 
 server.post("/livro", (Request, replay) => {
-    const { titulo, autor, ano, lido, nota} = Request.body
-      database.create({
+    const { titulo, autor, ano, lido, nota } = Request.body
+    database.create({
         titulo,
         autor,
         ano,
         lido,
         nota
-      }) 
-      return replay.status(201).send()
-      
-      
+    })
+    return replay.status(201).send()
+
+
 })
 
 //metodo put
 
 server.put("/livro/:id", (Request, replay) => {
     const livroId = Request.params.id
-    const { titulo, autor, ano, lido, nota } = Request.body 
+    const { titulo, autor, ano, lido, nota } = Request.body
     database.update(
         livroId, {
-            titulo,
-            autor,
-            ano,
-            lido,
-            nota
-        }
+        titulo,
+        autor,
+        ano,
+        lido,
+        nota
+    }
     )
     return replay.status(204).send()
 
@@ -63,10 +63,10 @@ server.delete("/livro/:id", (Request, replay) => {
     const livroId = Request.params.id
 
     database.delete(livroId)
-    
+
     return replay.status(204).send()
 
 })
 
 
-server.listen({port:3333})
+server.listen({ port: 3333 })
