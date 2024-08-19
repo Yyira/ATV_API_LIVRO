@@ -13,7 +13,7 @@ POST http://localhost:3333/livro
 Content-Type: application/json
 
 {
-    "titulo": "O Senhor dos Anéis",
+    "titulo": "lol",
     "autor": "J.R.R. Tolkien",
     "ano": 1953,
     "lido": false,
