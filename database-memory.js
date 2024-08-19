@@ -15,53 +15,49 @@ export class DatabaseMemory {
             })
 
             .filter(livro => {
-                if (titulo|| ano|| nota||autor || lido) { 
-                //autor
-                const autorDefined = autor != undefined
-                const autorLow = (autorDefined == true ? autor.toLowerCase() : false)
-                
+                if (titulo || ano || nota || autor || lido) {
+                    //autor
+                    const autorDefined = autor != undefined
+                    const autorLow = (autorDefined == true ? autor.toLowerCase() : false)
 
-                //lido
-                const lidoDefined = lido != undefined
-                let lidoBolean = true
-                if (lidoDefined) { lidoBolean = (lido == "true" ? true : false) }
-                
 
-                //ano
-                const anoDefined = ano!= undefined
-              
+                    //lido
+                    const lidoDefined = lido != undefined
+                    let lidoBolean = true
+                    if (lidoDefined) { lidoBolean = (lido == "true" ? true : false) }
 
-                //nota
-                const notaDefined = nota != undefined 
-                
 
-                //titulo
-                const tituloDefined = titulo != undefined
-                const tituloLow = (tituloDefined ? titulo.toLowerCase() : false)
+                    //ano
+                    const anoDefined = ano != undefined
 
-                console.log(titulo,livro.titulo)
 
-                    return(
+                    //nota
+                    const notaDefined = nota != undefined
+
+
+                    //titulo
+                    const tituloDefined = titulo != undefined
+                    const tituloLow = (tituloDefined ? titulo.toLowerCase() : false)
+
+                    console.log(titulo, livro.titulo)
+
+                    return (
                         (autorDefined ? livro.autor.toLowerCase().includes(autorLow) : true) &&
-                        (lidoDefined ? livro.lido == lidoBolean : true ) &&
-                        (anoDefined ? livro.ano == ano : true ) && 
-                        (notaDefined ? livro.nota == nota : true) 
+                            (lidoDefined ? livro.lido == lidoBolean : true) &&
+                            (anoDefined ? livro.ano == ano : true) &&
+                            (notaDefined ? livro.nota == nota : true)
 
-                        && tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow) : true
+                            && tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow) : true
 
                     )
 
 
-                    
+
                 }
-                    
-                // autorDefined ? livro.autor.toLowerCase().includes(autorLow)
-                // lidoDefined ? livro.lido == lidoBolean
-                // anoDefined ? livro.ano == ano
-                // notaDefined ? livro.nota == nota
-                // tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow)
-               
-                
+
+
+
+
                 return true
 
 
