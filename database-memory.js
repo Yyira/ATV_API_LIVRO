@@ -37,17 +37,16 @@ export class DatabaseMemory {
 
                     //titulo
                     const tituloDefined = titulo != undefined
-                    const tituloLow = (tituloDefined ? titulo.toLowerCase() : false)
+                    const tituloLow = (tituloDefined ? titulo.toLowerCase() : "")
 
                     console.log(titulo, livro.titulo)
 
                     return (
                         (autorDefined ? livro.autor.toLowerCase().includes(autorLow) : true) &&
-                            (lidoDefined ? livro.lido == lidoBolean : true) &&
-                            (anoDefined ? livro.ano == ano : true) &&
-                            (notaDefined ? livro.nota == nota : true)
-
-                            && tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow) : true
+                        (lidoDefined ? livro.lido == lidoBolean : true) &&
+                        (anoDefined ? livro.ano == ano : true) &&
+                        (notaDefined ? livro.nota == nota : true) &&
+                        (tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow) : true)
 
                     )
 
