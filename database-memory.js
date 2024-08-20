@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto"
 export class DatabaseMemory {
     #livros = new Map()
 
-    list(titulo, ano, nota, autor, lido) {
+    list(titulo, ano, nota, autor, lido, anoInicial, anoFinal) {
         return Array.from(this.#livros.entries())
             .map((livroArray) => {
                 const id = livroArray[0]
@@ -15,7 +15,7 @@ export class DatabaseMemory {
             })
 
             .filter(livro => {
-                if (titulo || ano || nota || autor || lido) {
+                if (titulo || ano || nota || autor || lido || anoInicial || anoFinal) {
                     //autor
                     const autorDefined = autor != undefined
                     const autorLow = (autorDefined == true ? autor.toLowerCase() : false)
@@ -29,6 +29,12 @@ export class DatabaseMemory {
 
                     //ano
                     const anoDefined = ano != undefined
+
+                     //ano
+                     const anoInicialDefined = anoInicial != undefined
+
+                      //ano
+                    const anoFinalDefined = anoFinal != undefined
 
 
                     //nota
@@ -45,6 +51,8 @@ export class DatabaseMemory {
                         (autorDefined ? livro.autor.toLowerCase().includes(autorLow) : true) &&
                         (lidoDefined ? livro.lido == lidoBolean : true) &&
                         (anoDefined ? livro.ano == ano : true) &&
+                        (anoInicialDefined ? livro.ano >= anoInicial : true) &&
+                        (anoFinalDefined ? livro.ano <= anoFinal : true) &&
                         (notaDefined ? livro.nota == nota : true) &&
                         (tituloDefined ? livro.titulo.toLowerCase().includes(tituloLow) : true)
 

@@ -13,8 +13,10 @@ server.get("/livro", (Request) => {
     const nota = Request.query.nota
     const autor = Request.query.autor
     const lido = Request.query.lido
-    
-    const livro = database.list(titulo, ano, nota, autor, lido)
+    const anoInicial = Request.query.anoInicial
+    const anoFinal = Request.query.anoFinal
+
+    const livro = database.list(titulo, ano, nota, autor, lido, anoInicial, anoFinal)
 
     return livro
 })
@@ -26,14 +28,36 @@ server.get("/livro", (Request) => {
 
 server.post("/livro", (Request, replay) => {
     const { titulo, autor, ano, lido, nota } = Request.body
-    database.create({
-        titulo,
-        autor,
-        ano,
-        lido,
-        nota
-    })
-    return replay.status(201).send()
+    console.log(titulo, autor, ano, lido, nota)
+
+
+    let men = ["ERRO: "]
+
+    if (titulo == undefined) { (men += "Titulo invalido ") }
+    if (autor == undefined) { (men += "Autor invalido ") }
+    if (ano == undefined) { (men += " Ano invalido ") }
+    if (lido == undefined) { (men += " Lido invalido ") }
+
+
+    if ((titulo != undefined) && (autor != undefined) && (ano != undefined) && (lido != undefined)) {
+        database.create({
+            titulo,
+            autor,
+            ano,
+            lido,
+            nota
+        })
+
+
+
+        return replay.status(201).send()
+    }
+
+    else {
+
+        return replay.status(422).send(men)
+    }
+
 
 
 })

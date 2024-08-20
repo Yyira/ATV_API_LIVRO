@@ -6,8 +6,11 @@
   "titulo": "string",
   "autor": "string",
   "ano": "number",
+  "anoInicial": "number",
+  "anoFinal": "number",
   "lido": "boolean",
   "nota": "number",
+  "ERRO": "string",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
