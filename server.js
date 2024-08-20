@@ -8,13 +8,7 @@ const database = new DatabaseMemory
 //metodo get
 
 server.get("/livro", (Request) => {
-    const titulo = Request.query.titulo
-    const ano = Request.query.ano
-    const nota = Request.query.nota
-    const autor = Request.query.autor
-    const lido = Request.query.lido
-    const anoInicial = Request.query.anoInicial
-    const anoFinal = Request.query.anoFinal
+    const {titulo,ano,nota,autor,lido,anoInicial,anoFinal} = Request.query
 
     const livro = database.list(titulo, ano, nota, autor, lido, anoInicial, anoFinal)
 
@@ -31,12 +25,12 @@ server.post("/livro", (Request, replay) => {
     console.log(titulo, autor, ano, lido, nota)
 
 
-    let men = ["ERRO: "]
+    let erros = new Array
 
-    if (titulo == undefined) { (men += "Titulo invalido ") }
-    if (autor == undefined) { (men += "Autor invalido ") }
-    if (ano == undefined) { (men += " Ano invalido ") }
-    if (lido == undefined) { (men += " Lido invalido ") }
+    if (titulo == undefined) { (erros.push("Titulo invalido ")) }
+    if (autor == undefined) { (erros.push("Autor invalido ")) }
+    if (ano == undefined) { (erros.push(" Ano invalido ")) }
+    if (lido == undefined) { (erros.push(" Lido invalido ")) }
 
 
     if ((titulo != undefined) && (autor != undefined) && (ano != undefined) && (lido != undefined)) {
@@ -55,7 +49,9 @@ server.post("/livro", (Request, replay) => {
 
     else {
 
-        return replay.status(422).send(men)
+        return replay.status(422).send(
+            erros
+        )
     }
 
 
