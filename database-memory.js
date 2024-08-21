@@ -80,17 +80,19 @@ export class DatabaseMemory {
     create(livro) {
         const livroId = randomUUID()
         //ip fixo apenas para teste
-        //const livroId ="1"
+        //const livroId = "1"
         this.#livros.set(livroId, livro)
     }
 
     update(id, livro, livroAntigo) {
-        console.log(livro.titulo, livroAntigo.titulo)
-        if (livro.titulo == undefined) { livro.titulo = livroAntigo.titulo }
-        if (livro.autor == undefined) { livro.autor = livroAntigo.autor }
-        if (livro.ano == undefined) { livro.ano = livroAntigo.ano }
-        if (livro.nota == undefined) { livro.nota = livroAntigo.nota }
-        if (livro.lido == undefined) { livro.lido = livroAntigo.lido }
+
+        //console.log(livro.titulo, livroAntigo.titulo)
+
+        livro.titulo = livro.titulo ?? livroAntigo.titulo
+        livro.autor = livro.autor ?? livroAntigo.autor
+        livro.ano = livro.ano ?? livroAntigo.ano
+        livro.nota = livro.nota ?? livroAntigo.nota
+        livro.lido = livro.lido ?? livroAntigo.lido
 
         this.#livros.set(id, livro)
     }

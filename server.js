@@ -84,7 +84,6 @@ server.put("/livro/:id", (Request, replay) => {
 
 server.delete("/livro/:id", (Request, replay) => {
     const livroId = Request.params.id
-
     database.delete(livroId)
 
     return replay.status(204).send()
