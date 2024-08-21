@@ -48,9 +48,11 @@ server.post("/livro", (Request, replay) => {
     }
 
     else {
-
+        const ret = {"erros":erros}
         return replay.status(422).send(
-            erros
+            ret
+        
+            
         )
     }
 
@@ -63,6 +65,7 @@ server.post("/livro", (Request, replay) => {
 server.put("/livro/:id", (Request, replay) => {
     const livroId = Request.params.id
     const { titulo, autor, ano, lido, nota } = Request.body
+    const livroAntigo = database.find(livroId)
     database.update(
         livroId, {
         titulo,
@@ -70,7 +73,7 @@ server.put("/livro/:id", (Request, replay) => {
         ano,
         lido,
         nota
-    }
+    }, livroAntigo
     )
     return replay.status(204).send()
 

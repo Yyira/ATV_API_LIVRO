@@ -15,7 +15,7 @@ Content-Type: application/json
 {
     "titulo": "O Senhor dos Anéis",
     "autor": "J.R.R. Tolkien",
-    "ano": 1953,
+    "ano": 1954,
     "lido": false,
     "nota": 9.5
 }
@@ -36,7 +36,7 @@ Content-Type: application/json
 
 ###
 
-put http://localhost:3333/livro/
+put http://localhost:3333/livro/1
 Content-Type: application/json
 
 {

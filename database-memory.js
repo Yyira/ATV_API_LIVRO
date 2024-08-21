@@ -2,6 +2,9 @@ import { randomUUID } from "node:crypto"
 export class DatabaseMemory {
     #livros = new Map()
 
+
+
+
     list(titulo, ano, nota, autor, lido, anoInicial, anoFinal) {
         return Array.from(this.#livros.entries())
             .map((livroArray) => {
@@ -30,10 +33,10 @@ export class DatabaseMemory {
                     //ano
                     const anoDefined = ano != undefined
 
-                     //ano
-                     const anoInicialDefined = anoInicial != undefined
+                    //ano
+                    const anoInicialDefined = anoInicial != undefined
 
-                      //ano
+                    //ano
                     const anoFinalDefined = anoFinal != undefined
 
 
@@ -76,14 +79,26 @@ export class DatabaseMemory {
 
     create(livro) {
         const livroId = randomUUID()
-
+        //ip fixo apenas para teste
+        //const livroId ="1"
         this.#livros.set(livroId, livro)
     }
 
-    update(id, livro) {
+    update(id, livro, livroAntigo) {
+        console.log(livro.titulo, livroAntigo.titulo)
+        if (livro.titulo == undefined) { livro.titulo = livroAntigo.titulo }
+        if (livro.autor == undefined) { livro.autor = livroAntigo.autor }
+        if (livro.ano == undefined) { livro.ano = livroAntigo.ano }
+        if (livro.nota == undefined) { livro.nota = livroAntigo.nota }
+        if (livro.lido == undefined) { livro.lido = livroAntigo.lido }
+
         this.#livros.set(id, livro)
     }
+    find(livroId) {
+        const livroAntigo = this.#livros.get(livroId)
 
+        return livroAntigo
+    }
     delete(id) {
         this.#livros.delete(id)
     }
